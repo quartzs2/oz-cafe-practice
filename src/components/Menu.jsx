@@ -1,16 +1,16 @@
 import { useState } from "react";
 import Item from "./Item";
 import OrderModal from "./OrderModal";
+import { useMenu } from "../hooks/useMenu";
+import { useCart } from "../hooks/useCart";
 
-function Menu({ menu, cart, setCart }) {
+function Menu() {
+  const { menu } = useMenu();
+  const { cart, setCart } = useCart();
+
   const [modalOn, setModalOn] = useState(false);
   const [modalMenu, setModalMenu] = useState(null);
-  if (!menu)
-    return (
-      <div style={{ textAlign: "center", margin: "80px" }}>
-        메뉴 정보가 없어요!
-      </div>
-    );
+  if (!menu) return <div style={{ textAlign: "center", margin: "80px" }}>메뉴 정보가 없어요!</div>;
 
   const categorys = Object.keys(menu);
   return (
@@ -35,12 +35,7 @@ function Menu({ menu, cart, setCart }) {
         );
       })}
       {modalOn ? (
-        <OrderModal
-          modalMenu={modalMenu}
-          setModalOn={setModalOn}
-          cart={cart}
-          setCart={setCart}
-        />
+        <OrderModal modalMenu={modalMenu} setModalOn={setModalOn} cart={cart} setCart={setCart} />
       ) : null}
     </>
   );
