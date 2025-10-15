@@ -32,7 +32,7 @@ function Menu() {
           />
         );
       })}
-      {isModalOpen && <OrderModal modalMenu={modalMenu} setModalOn={setIsModalOpen} />}
+      {isModalOpen && <OrderModal modalMenu={modalMenu} onClose={() => setIsModalOpen(false)} />}
     </>
   );
 }
