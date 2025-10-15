@@ -1,17 +1,12 @@
-import { useMenu } from '@contexts/MenuContext';
-import { useCart } from '@contexts/CartContext';
-import CartItem from '@components/CartItem';
+import { useMenu } from "@hooks/useMenu";
+import { useCart } from "@hooks/useCart";
+import CartItem from "@components/CartItem";
 
 function Cart() {
   const { menu } = useMenu();
   const { cart, removeFromCart } = useCart();
 
-  if (!menu)
-    return (
-      <div style={{ textAlign: 'center', margin: '80px' }}>
-        메뉴 정보가 없어요!
-      </div>
-    );
+  if (!menu) return <div style={{ textAlign: "center", margin: "80px" }}>메뉴 정보가 없어요!</div>;
   const allMenus = [...menu.커피, ...menu.논커피];
   return (
     <>

@@ -1,19 +1,14 @@
-import { useState } from 'react';
-import { useMenu } from '@contexts/MenuContext';
-import Item from '@components/Item';
-import OrderModal from '@components/OrderModal';
+import { useState } from "react";
+import { useMenu } from "@hooks/useMenu";
+import Item from "@components/Item";
+import OrderModal from "@components/OrderModal";
 
 function Menu() {
   const [modalOn, setModalOn] = useState(false);
   const [modalMenu, setModalMenu] = useState(null);
   const { menu } = useMenu();
 
-  if (!menu)
-    return (
-      <div style={{ textAlign: 'center', margin: '80px' }}>
-        메뉴 정보가 없어요!
-      </div>
-    );
+  if (!menu) return <div style={{ textAlign: "center", margin: "80px" }}>메뉴 정보가 없어요!</div>;
 
   const categories = Object.keys(menu);
   return (
@@ -37,9 +32,7 @@ function Menu() {
           </section>
         );
       })}
-      {modalOn ? (
-        <OrderModal modalMenu={modalMenu} setModalOn={setModalOn} />
-      ) : null}
+      {modalOn ? <OrderModal modalMenu={modalMenu} setModalOn={setModalOn} /> : null}
     </>
   );
 }

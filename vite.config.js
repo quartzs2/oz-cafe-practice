@@ -1,24 +1,22 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import path from 'path';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import { resolve } from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = resolve(fileURLToPath(import.meta.url), "..");
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: [
-      { find: '@layouts', replacement: path.resolve(__dirname, 'src/layouts') },
-      { find: '@pages', replacement: path.resolve(__dirname, 'src/pages') },
-      {
-        find: '@components',
-        replacement: path.resolve(__dirname, 'src/components'),
-      },
-      {
-        find: '@contexts',
-        replacement: path.resolve(__dirname, 'src/contexts'),
-      },
-      { find: '@assets', replacement: path.resolve(__dirname, 'src/assets') },
-      { find: '@styles', replacement: path.resolve(__dirname, 'src/styles') },
-    ],
+    alias: {
+      "@components": resolve(__dirname, "./src/components"),
+      "@contexts": resolve(__dirname, "./src/contexts"),
+      "@hooks": resolve(__dirname, "./src/hooks"),
+      "@pages": resolve(__dirname, "./src/pages"),
+      "@layouts": resolve(__dirname, "./src/layouts"),
+      "@styles": resolve(__dirname, "./src/styles"),
+      "@assets": resolve(__dirname, "./src/assets"),
+    },
   },
 });

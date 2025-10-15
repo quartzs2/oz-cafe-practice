@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { useCart } from '@contexts/CartContext';
-import Option from '@components/Option';
-import data from '@assets/data';
+import { useState } from "react";
+import { useCart } from "@hooks/useCart";
+import Option from "@components/Option";
+import data from "@assets/data";
 
 function OrderModal({ modalMenu, setModalOn, cart, setCart }) {
   const [options, setOptions] = useState({ 온도: 0, 진하기: 0, 사이즈: 0 });
