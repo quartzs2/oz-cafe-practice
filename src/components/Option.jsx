@@ -1,4 +1,7 @@
 function Option({ name, options, setOptions, itemOptions }) {
+  const onChangeHandler = (event) =>
+    setOptions((prev) => ({ ...prev, [name]: event.target.value }));
+
   return (
     <li className="option">
       {name}
@@ -9,7 +12,7 @@ function Option({ name, options, setOptions, itemOptions }) {
               type="radio"
               name={name}
               checked={options[name] === idx}
-              onChange={() => setOptions({ ...options, [name]: idx })}
+              onChange={onChangeHandler}
             />
             {option}
           </li>
